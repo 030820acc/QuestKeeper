@@ -6,7 +6,7 @@ import { signUp } from '../../store/session';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, name, password));
       if (data) {
         setErrors(data)
       }
@@ -26,8 +26,8 @@ const SignUpForm = () => {
     setUsername(e.target.value);
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
+  const updateName = (e) => {
+    setName(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -59,12 +59,12 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <label>Name</label>
         <input
           type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
+          name='name'
+          onChange={updateName}
+          value={name}
         ></input>
       </div>
       <div>
