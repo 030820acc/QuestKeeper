@@ -4,7 +4,7 @@ from app.models import db, Character
 characters = Blueprint('characters', __name__)
 
 # GET
-@characters.route('/')
+@characters.route('/<user_id>')
 def get_all_characters(user_id):
     chars = Character.query.filter_by(user_id=user_id).all()
 
@@ -41,7 +41,7 @@ def create_character():
 
     return jsonify(new_character.to_dict())
 
-# POST
+# PUT
 @characters.route('/<id>', methods=['PUT'])
 def edit_character(id):
     char = Character.query.filter_by(id=id).one()
