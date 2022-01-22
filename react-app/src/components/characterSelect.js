@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllCharacters } from '../store/character';
 import CharacterCard from './CharacterCard';
+import { NavLink } from 'react-router-dom';
 
 const CharacterSelect = () => {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.session.user);
     const characters = useSelector((state) => state.characters)
     const charArr = Object.values(characters)
+    
 
     useEffect(() => {
       dispatch(getAllCharacters(user.id))
@@ -18,12 +20,9 @@ const CharacterSelect = () => {
     return (
         <div className="card-grid">
             <div className="new-button-card">
-                <button onClick={(e) => {
-                    e.preventDefault()
-                    
-                }}>+</button>
+                <NavLink id="new-button" to='/characters/new'>+</NavLink>
             </div>
-            {charArr.map((char) => {
+            {charArr?.map((char) => {
                 return (
                     <CharacterCard key={char.id} char={char}/>
                 )

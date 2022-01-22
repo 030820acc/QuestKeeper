@@ -1,9 +1,27 @@
 
 const GET_ALL_CHARACTERS = "characters/GET_ALL_CHARACTERS";
+const ADD_CHARACTER = "/characters/ADD_CHARACTER";
+const UPDATE_CHARACTER = "characters/UPDATE_CHARACTER";
+const DELETE_CHARACTER = "characters/DELETE_CHARACTER";
 
 const loadAllCharacters = (characters) => ({
   type: GET_ALL_CHARACTERS,
   characters,
+});
+
+const addCharacter = (character) => ({
+  type: ADD_CHARACTER,
+  character,
+});
+
+const loadEditedCharacter = (character) => ({
+  type: UPDATE_CHARACTER,
+  character,
+});
+
+const loadDeletedCharacter = (characterId) => ({
+  type: DELETE_CHARACTER,
+  characterId,
 });
 
 export const getAllCharacters = (userId) => async (dispatch) => {
@@ -15,13 +33,6 @@ export const getAllCharacters = (userId) => async (dispatch) => {
     }
 };
 
-
-const ADD_CHARACTER = "/characters/ADD_CHARACTER";
-
-const addCharacter = (character) => ({
-  type: ADD_CHARACTER,
-  character,
-});
 
 export const createCharacter = (payload) => async (dispatch) => {
   const res = await fetch(`/api/characters/`, {
@@ -40,13 +51,6 @@ export const createCharacter = (payload) => async (dispatch) => {
 };
 
 
-const UPDATE_CHARACTER = "characters/UPDATE_CHARACTER";
-
-const loadEditedCharacter = (character) => ({
-  type: UPDATE_CHARACTER,
-  character,
-});
-
 export const updateCharacter = (payload, characterId) => async (dispatch) => {
     const res = await fetch(`/api/characters/${characterId}`, {
       method: "PUT",
@@ -61,13 +65,6 @@ export const updateCharacter = (payload, characterId) => async (dispatch) => {
 };
 
 
-const DELETE_CHARACTER = "characters/DELETE_CHARACTER";
-
-const loadDeletedCharacter = (characterId) => ({
-  type: DELETE_CHARACTER,
-  characterId,
-});
-
 export const deleteCharacter = (characterId ) => async (dispatch) => {
     const res = await fetch(`/api/characters/${characterId}`, {
       method: "DELETE",
@@ -78,11 +75,13 @@ export const deleteCharacter = (characterId ) => async (dispatch) => {
       const characterId = await res.json();
       dispatch(loadDeletedCharacter(characterId));
     }
-  };
+};
 
 const initialState = {};
+
 const characterReducer = (state = initialState, action) => {
   let newState = {};
+  
   switch (action.type) {
     case GET_ALL_CHARACTERS:
       action.characters.forEach((character) => {

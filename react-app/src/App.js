@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import CharacterSelect from './components/characterSelect';
+import NewCharacterForm from './components/NewCharacterForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,20 +30,27 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/characters/new' exact={true}>
+          <NewCharacterForm />
+        </Route>
         <Route path='/login' exact={true}>
+          <NavBar />
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
+          <NavBar />
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
+          <NavBar />
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
+          <NavBar />
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <CharacterSelect />
+        <ProtectedRoute path='/' exact={true} > 
+            <CharacterSelect />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

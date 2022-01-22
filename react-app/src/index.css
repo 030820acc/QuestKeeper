@@ -1,1 +1,197 @@
 /* TODO Add site wide styles */
+@import url('http://db.onlinewebfonts.com/c/e3e794f35cf6e4475f17d8f7a91df0a5?family=Tiamat+Condensed+SC+Regular');
+
+
+/* #e7e7db parchment
+#9d2913 maroon
+#5d5d5d grey
+#e03e20 dnd red
+#9d0a0e button color with white border */
+#color1{
+    background-color: #e7e7db;
+    border: 2px solid black;
+}
+
+#color2{
+    background-color: #9d2913;
+    border: 2px solid black;
+}
+
+#color3{
+    background-color: #5d5d5d;
+    border: 2px solid black;
+}
+
+#color4{
+    background-color: #e03e20;
+    border: 2px solid black;
+}
+
+#color5{
+    background-color: #9d0a0e;
+    border: 2px solid black;
+}
+
+
+/* page styling guide  */
+
+
+
+#main{
+    display: flex;
+    width: 100vh;
+    height: 100vw;
+}
+
+#logo{
+    width: 80px;
+    height: 90px;
+    margin: 10px;
+}
+
+.navbar{
+    background-color: #5d5d5d;
+    color: white;
+    padding: 30px;
+    /* margin-right: 15px; */
+}
+
+.nav-button{
+    font-family: "Tiamat Condensed SC Regular";
+}
+
+#content{
+    margin-right: 15px;
+}
+
+
+#new-button{
+    font-size: 6rem;
+    text-decoration: none;
+    color: #e03e20;
+}
+
+.card{
+    border: 2px solid black;
+    border-radius: .25rem;
+    padding: 1rem;
+    background-color: #e7e7db;
+    margin: 1rem;
+    box-shadow: 10px 10px 6px 1px #5d5d5d;
+    transition: box-shadow 0.25s ease;
+}
+
+.card:hover{
+    box-shadow: 12px 12px 8px 1px #5d5d5d;
+}
+
+.new-button-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: .25rem;
+    padding: 1rem;
+    background-color: #e7e7db;
+    margin: 1rem;
+    box-shadow: 10px 10px 6px 1px #5d5d5d;
+    transition: box-shadow 0.25s ease;
+}
+
+.new-button-card:hover{
+    box-shadow: 12px 12px 8px 1px #5d5d5d;
+}
+
+.name{
+    font-family: "Tiamat Condensed SC Regular";
+    font-size: 2.5rem;
+}
+
+.card-details{
+    font-family: serif;
+    font-size: 1.35rem;
+}
+
+.card-grid{
+    display: grid;
+    /* grid: repeat(1, 600px) / auto-flow 400px; */
+    grid: auto-flow / 1fr 1fr 1fr;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+/*card styling rule for main page*/
+.main-grid{
+    display: grid;
+    /* grid: repeat(1, 600px) / auto-flow 400px; */
+    grid: auto-flow / 1fr;
+}
+
+.top-line{
+    display: grid;
+    grid: auto-flow / 1fr 2fr;
+}
+
+.bottom-line{
+    display: grid;
+    grid: auto-flow / 1fr
+}
+
+
+/* button1 is main button style including the hover good for main background color 
+button2 is the alternate for darker backgrounds so it has more contrast cause theres a border
+font is critical for titles and sans serif for normal labels on buttons and serif for spells and items
+grey side bar and topbar with white lettering*/
+
+.test{
+    font-family: "Tiamat Condensed SC Regular";
+}
+
+body{
+    background-image: url("./dndbackground.png");
+    margin: 0px;
+}
+
+.button2{
+    font-family: sans-serif;
+    background-color: #9d0a0e;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border: 2px solid white;
+    color: #fff;
+    transition: background-color 0.25s ease;
+}
+
+.button2:hover{
+    background-color: black;
+}
+
+.buttondiv1{
+    background-color: #5d5d5d;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttondiv2{
+    background-image: url("./dndbackground.png");
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.button{
+    padding: 15px 30px;
+    border: 0;
+    background: #9d0a0e;
+    color: white;
+    transition: background-color 0.25s ease;
+}
+
+.button:hover{
+    background-color: black;
+}
