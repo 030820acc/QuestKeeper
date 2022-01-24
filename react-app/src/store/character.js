@@ -61,6 +61,7 @@ export const updateCharacter = (payload, characterId) => async (dispatch) => {
     if (res.ok) {
       const character = await res.json();
       dispatch(loadEditedCharacter(character));
+      return character
     }
 };
 

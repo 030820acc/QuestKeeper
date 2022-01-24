@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import CharacterSelect from './components/characterSelect';
 import NewCharacterForm from './components/NewCharacterForm';
 import MainCharacterPage from './components/MainCharacterPage';
+import EditCharacterForm from './components/EditCharacterForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,26 +32,25 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/characters/new' exact={true}>
+        <ProtectedRoute path='/characters/new' exact={true}>
           <NewCharacterForm />
-        </Route>
-        <Route path='/characters/:id'>
+        </ProtectedRoute>
+        <ProtectedRoute path='/characters/edit/:id' exact={true}>
+          <EditCharacterForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/characters/:id'>
           <MainCharacterPage />
-        </Route>
+        </ProtectedRoute>
         <Route path='/login' exact={true}>
-          <NavBar />
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <NavBar />
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <NavBar />
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <NavBar />
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} > 

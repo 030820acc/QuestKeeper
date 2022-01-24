@@ -9,9 +9,10 @@ import { getAllCharacters } from '../store/character';
 const MainCharacterPage = () => {
     const { id } = useParams()
     const dispatch = useDispatch()
-    const characters = useSelector((state) => state.characters)
     const user = useSelector((state) => state.session.user)
-    const char = characters[id]
+    const char = useSelector((state) => state.characters[id])
+    // const char = characters[id]
+    // console.log(char)
 
     useEffect(() => {
         dispatch(getAllCharacters(user.id))
@@ -21,7 +22,7 @@ const MainCharacterPage = () => {
     return (
         <div className="Main-grid"> 
             <div className="top-line">
-                <HealthWidget charId={char.id}/>
+                <HealthWidget id={char?.id}/>
                 <div className="card">
                     
                 </div>

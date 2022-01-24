@@ -1,30 +1,34 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createCharacter } from '../store/character';
+import { useHistory, useParams } from 'react-router-dom';
+import { updateCharacter } from '../store/character';
 
-const NewCharacterForm = () => {
+
+const EditCharacterForm = () => {
+    const {id} = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector((state) => state.session.user);
+    const char = useSelector((state) => state.characters[id])
 
-    const [name, setName] = useState('')
-    const [characterClass, setCharacterClass] = useState('ranger')
-    const [race, setRace] = useState('human')
-    const [level, setLevel] = useState()
-    const [speed, setSpeed] = useState()
-    const [armorClass, setArmorClass] = useState()
-    const [health, setHealth] = useState()
-    const [init, setInit] = useState()
-    const [hitDice, setHitDice] = useState()
-    const [strength, setStrength] = useState()
-    const [wisdom, setWisdom] = useState()
-    const [constitution, setConstitution] = useState()
-    const [intelligence, setIntelligence] = useState()
-    const [dexterity, setDexterity] = useState()
-    const [charisma, setCharisma] = useState()
-    const [spellSave, setSpellSave] = useState()
-    const [spellMod, setSpellMod] = useState()
+
+    const [name, setName] = useState(char.name)
+    const [characterClass, setCharacterClass] = useState(char.class)
+    const [race, setRace] = useState(char.race)
+    const [level, setLevel] = useState(char.level)
+    const [speed, setSpeed] = useState(char.speed)
+    const [armorClass, setArmorClass] = useState(char.armor_class)
+    const [health, setHealth] = useState(char.health)
+    const [init, setInit] = useState(char.init)
+    const [hitDice, setHitDice] = useState(char.hit_dice)
+    const [strength, setStrength] = useState(char.strength)
+    const [wisdom, setWisdom] = useState(char.wisdom)
+    const [constitution, setConstitution] = useState(char.constitution)
+    const [intelligence, setIntelligence] = useState(char.intelligence)
+    const [dexterity, setDexterity] = useState(char.dexterity)
+    const [charisma, setCharisma] = useState(char.charisma)
+    const [spellSave, setSpellSave] = useState(char.spell_save)
+    const [spellMod, setSpellMod] = useState(char.spell_mod)
 
 
     const updateClass = (e) => setCharacterClass(e.target.value);
@@ -69,9 +73,8 @@ const NewCharacterForm = () => {
             spellMod
         };
         
-        let newCharacter = await dispatch(createCharacter(payload));
-        console.log(newCharacter)
-        if (newCharacter) {
+        let editedCharacter = await dispatch(updateCharacter(payload, id));
+        if (editedCharacter) {
           history.push('/')
         }
       };
@@ -170,4 +173,4 @@ const NewCharacterForm = () => {
     )
 };
 
-export default NewCharacterForm;
+export default EditCharacterForm;
