@@ -1,5 +1,5 @@
 
-const GET_ALL_CHARACTERS = "characters/GET_ALL_CHARACTERS";
+const GET_ALL_CHARACTERS = "characters/GET_ALL_CHARACTERS"
 const ADD_CHARACTER = "/characters/ADD_CHARACTER";
 const UPDATE_CHARACTER = "characters/UPDATE_CHARACTER";
 const DELETE_CHARACTER = "characters/DELETE_CHARACTER";
@@ -81,7 +81,7 @@ const initialState = {};
 
 const characterReducer = (state = initialState, action) => {
   let newState = {};
-  
+
   switch (action.type) {
     case GET_ALL_CHARACTERS:
       action.characters.forEach((character) => {

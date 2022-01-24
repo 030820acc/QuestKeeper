@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import CharacterSelect from './components/characterSelect';
 import NewCharacterForm from './components/NewCharacterForm';
+import MainCharacterPage from './components/MainCharacterPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -32,6 +33,9 @@ function App() {
       <Switch>
         <Route path='/characters/new' exact={true}>
           <NewCharacterForm />
+        </Route>
+        <Route path='/characters/:id'>
+          <MainCharacterPage />
         </Route>
         <Route path='/login' exact={true}>
           <NavBar />

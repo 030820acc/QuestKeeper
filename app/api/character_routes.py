@@ -3,12 +3,13 @@ from app.models import db, Character
 
 characters = Blueprint('characters', __name__)
 
-# GET
+# GET 
 @characters.route('/<user_id>')
 def get_all_characters(user_id):
     chars = Character.query.filter_by(user_id=user_id).all()
 
     return jsonify([char.to_dict() for char in chars])
+
 
 # POST
 @characters.route('/', methods=['POST'])
