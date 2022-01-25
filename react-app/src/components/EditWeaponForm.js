@@ -51,7 +51,7 @@ const EditWeaponForm = () => {
                 placeholder="Keywords"
                 value={keywords}
                 onChange={updateKeywords} />
-            <button onClick={handleSubmit}>Create Weapon</button>
+            <button onClick={handleSubmit}>Update Weapon</button>
         </div>
     )
 };

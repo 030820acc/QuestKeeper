@@ -16,6 +16,9 @@ import SelectNavBar from './components/SelectNav';
 import WeaponPage from './components/WeaponPage';
 import NewWeaponForm from './components/NewWeaponForm';
 import EditWeaponForm from './components/EditWeaponForm';
+import SpellPage from './components/SpellPage';
+import NewSpellForm from './components/NewSpellForm'
+import EditSpellForm from './components/EditSpellForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +46,10 @@ function App() {
           <SelectNavBar />
           <NewWeaponForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/spells/new/:id' exact={true}>
+          <SelectNavBar />
+          <NewSpellForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/characters/edit/:id' exact={true}>
           <SelectNavBar />
           <EditCharacterForm />
@@ -51,9 +58,17 @@ function App() {
           <MainNavBar />
           <EditWeaponForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/spells/edit/:id' exact={true}>
+          <MainNavBar />
+          <EditSpellForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/inventory/:id'>
           <MainNavBar />
           <WeaponPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/spells/:id'>
+          <MainNavBar />
+          <SpellPage />
         </ProtectedRoute>
         <ProtectedRoute path='/characters/:id'>
           <MainNavBar />

@@ -168,7 +168,7 @@ const EditCharacterForm = () => {
                placeholder="Spell Attack Modifier"
                value={spellMod}
                onChange={updateSpellMod} />
-            <button onClick={handleSubmit}>Create Character</button>
+            <button onClick={handleSubmit}>Update Character</button>
         </div>
     )
 };
