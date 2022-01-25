@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import MainNavBar from './components/MainNavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -12,6 +12,10 @@ import CharacterSelect from './components/characterSelect';
 import NewCharacterForm from './components/NewCharacterForm';
 import MainCharacterPage from './components/MainCharacterPage';
 import EditCharacterForm from './components/EditCharacterForm';
+import SelectNavBar from './components/SelectNav';
+import WeaponPage from './components/WeaponPage';
+import NewWeaponForm from './components/NewWeaponForm';
+import EditWeaponForm from './components/EditWeaponForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,31 +34,42 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <ProtectedRoute path='/characters/new' exact={true}>
+          <SelectNavBar />
           <NewCharacterForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/weapons/new/:id' exact={true}>
+          <SelectNavBar />
+          <NewWeaponForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/characters/edit/:id' exact={true}>
+          <SelectNavBar />
           <EditCharacterForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/weapons/edit/:id' exact={true}>
+          <MainNavBar />
+          <EditWeaponForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/inventory/:id'>
+          <MainNavBar />
+          <WeaponPage />
+        </ProtectedRoute>
         <ProtectedRoute path='/characters/:id'>
+          <MainNavBar />
           <MainCharacterPage />
         </ProtectedRoute>
         <Route path='/login' exact={true}>
+          <SelectNavBar />
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
+          <SelectNavBar />
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} > 
-            <CharacterSelect />
+          <SelectNavBar />
+          <CharacterSelect />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
