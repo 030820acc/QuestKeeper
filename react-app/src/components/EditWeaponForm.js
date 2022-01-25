@@ -35,7 +35,7 @@ const EditWeaponForm = () => {
     };
 
     return (
-        <div className='form'>
+        <div className='forms'>
             <input
                 type="text"
                 placeholder="Name"
@@ -51,7 +51,7 @@ const EditWeaponForm = () => {
                 placeholder="Keywords"
                 value={keywords}
                 onChange={updateKeywords} />
-            <button onClick={handleSubmit}>Update Weapon</button>
+            <button className="button" onClick={handleSubmit}>Update Weapon</button>
         </div>
     )
 };

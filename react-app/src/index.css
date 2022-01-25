@@ -1,6 +1,46 @@
 /* TODO Add site wide styles */
 @import url('https://db.onlinewebfonts.com/c/e3e794f35cf6e4475f17d8f7a91df0a5?family=Tiamat+Condensed+SC+Regular');
 
+.forms{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    background-image: url(https://images.alphacoders.com/110/1107087.jpg);
+    padding: 50px;
+
+}
+
+.forms > input{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 15px;
+    border: none;
+}
+
+.forms > label{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: white;
+}
+
+.forms > button{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.forms > select{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 15px;
+    border: none;
+    background-color: #5d5d5d;
+    color: white;
+}
 
 /* #e7e7db parchment
 #9d2913 maroon

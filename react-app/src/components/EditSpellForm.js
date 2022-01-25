@@ -51,7 +51,7 @@ const EditSpellForm = () => {
     };
 
     return (
-        <div className='form'>
+        <div className='forms'>
             <input
                 type="text"
                 placeholder="Name"
@@ -92,7 +92,7 @@ const EditSpellForm = () => {
                 placeholder="Details"
                 value={details}
                 onChange={updateDetails} />
-            <button onClick={handleSubmit}>Update Spell</button>
+            <button className="button" onClick={handleSubmit}>Update Spell</button>
         </div>
     )
 };

@@ -77,7 +77,7 @@ const NewCharacterForm = () => {
       };
 
     return (
-        <div className='form'>
+        <div className='forms'>
             <input
                 type="text"
                 placeholder="Name"
@@ -165,7 +165,7 @@ const NewCharacterForm = () => {
                placeholder="Spell Attack Modifier"
                value={spellMod}
                onChange={updateSpellMod} />
-            <button onClick={handleSubmit}>Create Character</button>
+            <button className="button" onClick={handleSubmit}>Create Character</button>
         </div>
     )
 };

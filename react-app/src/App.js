@@ -43,15 +43,15 @@ function App() {
           <NewCharacterForm />
         </ProtectedRoute>
         <ProtectedRoute path='/weapons/new/:id' exact={true}>
-          <SelectNavBar />
+          <MainNavBar />
           <NewWeaponForm />
         </ProtectedRoute>
         <ProtectedRoute path='/spells/new/:id' exact={true}>
-          <SelectNavBar />
+          <MainNavBar />
           <NewSpellForm />
         </ProtectedRoute>
         <ProtectedRoute path='/characters/edit/:id' exact={true}>
-          <SelectNavBar />
+          <MainNavBar />
           <EditCharacterForm />
         </ProtectedRoute>
         <ProtectedRoute path='/weapons/edit/:id' exact={true}>

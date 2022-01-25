@@ -50,7 +50,7 @@ const NewSpellForm = () => {
     };
 
     return (
-        <div className='form'>
+        <div className='forms'>
             <input
                 type="text"
                 placeholder="Name"
@@ -91,7 +91,7 @@ const NewSpellForm = () => {
                 placeholder="Details"
                 value={details}
                 onChange={updateDetails} />
-            <button onClick={handleSubmit}>Create Spell</button>
+            <button className="button" onClick={handleSubmit}>Create Spell</button>
         </div>
     )
 };

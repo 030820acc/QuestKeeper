@@ -80,7 +80,7 @@ const EditCharacterForm = () => {
       };
 
     return (
-        <div className='form'>
+        <div className='forms'>
             <input
                 type="text"
                 placeholder="Name"
@@ -168,7 +168,7 @@ const EditCharacterForm = () => {
                placeholder="Spell Attack Modifier"
                value={spellMod}
                onChange={updateSpellMod} />
-            <button onClick={handleSubmit}>Update Character</button>
+            <button className="button" onClick={handleSubmit}>Update Character</button>
         </div>
     )
 };
