@@ -19,12 +19,12 @@ const MainCharacterPage = () => {
 
     useEffect(() => {
         dispatch(getAllWeapons(id))
-    }, []);
+    }, [dispatch, id]);
 
 
     useEffect(() => {
         dispatch(getAllCharacters(user.id))
-    }, []);
+    }, [dispatch, user.id]);
     
 
     return (

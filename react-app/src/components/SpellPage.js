@@ -15,7 +15,7 @@ const SpellPage = () => {
 
     useEffect(() => {
         dispatch(getAllSpells(id))
-    }, []);
+    }, [dispatch, id]);
 
     return (
         <div className="card-grid">

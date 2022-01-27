@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { deleteCharacter, updateCharacter } from '../store/character';
+import { deleteCharacter } from '../store/character';
 
 const CharacterCard = ({ char }) => {
     const history = useHistory()

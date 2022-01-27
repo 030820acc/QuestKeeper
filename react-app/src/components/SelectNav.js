@@ -1,14 +1,12 @@
 
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const SelectNavBar = () => {
-    const user = useSelector((state) => state.session)
 
     return (
-        <nav class='navbar'>
+        <nav className='navbar'>
             <ul className='navbarlinks'>
                 <li>
                     <h2 className="logoname">QuestKeeper</h2>

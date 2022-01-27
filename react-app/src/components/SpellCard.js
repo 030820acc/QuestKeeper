@@ -1,10 +1,9 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteSpell } from '../store/spell';
 
 const SpellCard = ({spell}) => {
-    const { id } = useParams()
     const history = useHistory()
     const dispatch = useDispatch()
 

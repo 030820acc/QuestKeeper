@@ -1,10 +1,9 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteWeapon } from '../store/weapon';
 
 const WeaponCard = ({weapon}) => {
-    const { id } = useParams()
     const history = useHistory()
     const dispatch = useDispatch()
 

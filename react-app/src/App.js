@@ -5,8 +5,6 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import MainNavBar from './components/MainNavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import { authenticate } from './store/session';
 import CharacterSelect from './components/characterSelect';
 import NewCharacterForm from './components/NewCharacterForm';
