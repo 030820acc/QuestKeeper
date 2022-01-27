@@ -64,7 +64,7 @@ const EditSpellForm = () => {
             newSpell = await dispatch(updateSpell(payload, id));
         }
         if (newSpell) {
-            history.push(`/spells/${id}`)
+            history.push(`/spells/${spell.character_id}`)
         }
     };
 
