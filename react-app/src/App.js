@@ -19,6 +19,7 @@ import EditWeaponForm from './components/EditWeaponForm';
 import SpellPage from './components/SpellPage';
 import NewSpellForm from './components/NewSpellForm'
 import EditSpellForm from './components/EditSpellForm';
+import AboutPage from './components/AboutPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,6 +39,9 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path='/about' exact={true}>
+          <AboutPage />
+        </Route>
         <ProtectedRoute path='/characters/new' exact={true}>
           <SelectNavBar />
           <NewCharacterForm />

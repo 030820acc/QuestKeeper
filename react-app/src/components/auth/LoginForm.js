@@ -57,6 +57,11 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type='submit'>Login</button>
+        <button onClick={(e) => {
+          e.preventDefault()
+          setUsername('Demo')
+          setPassword('password')
+        }}>Demo Login</button>
       </div>
     </form>
   );

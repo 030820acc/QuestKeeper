@@ -1,5 +1,11 @@
 /* TODO Add site wide styles */
-@import url('https://db.onlinewebfonts.com/c/e3e794f35cf6e4475f17d8f7a91df0a5?family=Tiamat+Condensed+SC+Regular');
+/* 
+ */
+ @font-face {font-family: "Tiamat Condensed SC Regular"; src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot"); src: url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.woff") format("woff"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/e3e794f35cf6e4475f17d8f7a91df0a5.svg#Tiamat Condensed SC Regular") format("svg"); }
+
+li{
+    list-style-type: none;
+}
 
 .forms{
     display: flex;
@@ -7,7 +13,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 15px;
-    background-image: url(https://images.alphacoders.com/110/1107087.jpg);
+    background-image: url("./formbackground.jpg");
     padding: 50px;
 
 }
@@ -93,7 +99,12 @@
     background-color: #5d5d5d;
     color: white;
     padding: 30px;
-    /* margin-right: 15px; */
+}
+
+.navbarlinks{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-button{
@@ -145,6 +156,12 @@
 .name{
     font-family: "Tiamat Condensed SC Regular";
     font-size: 2.5rem;
+}
+
+.logoname{
+    font-family: "Tiamat Condensed SC Regular";
+    font-size: 2.5rem;
+    color: #9d0a0e;
 }
 
 .card-details{
@@ -233,5 +250,20 @@ body{
 }
 
 .button:hover{
+    background-color: black;
+}
+
+.navlinkstyle{
+    padding: 15px 30px;
+    border: 0;
+    background: #9d0a0e;
+    color: white;
+    transition: background-color 0.25s ease;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: "Tiamat Condensed SC Regular";
+}
+
+.navlinkstyle:hover{
     background-color: black;
 }

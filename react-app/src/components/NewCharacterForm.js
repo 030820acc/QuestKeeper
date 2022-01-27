@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createCharacter } from '../store/character';
@@ -25,6 +25,7 @@ const NewCharacterForm = () => {
     const [charisma, setCharisma] = useState()
     const [spellSave, setSpellSave] = useState()
     const [spellMod, setSpellMod] = useState()
+    const [errorsArr, setErrorsArr] = useState([])
 
 
     const updateClass = (e) => setCharacterClass(e.target.value);
@@ -45,9 +46,32 @@ const NewCharacterForm = () => {
     const updateSpellSave = (e) => setSpellSave(e.target.value);
     const updateSpellMod = (e) => setSpellMod(e.target.value);
 
+    useEffect(() => {
+        let errors = [];
+        if (name.length < 1) { errors.push('Your character needs a name.') }
+        if (name.length > 45) { errors.push('Your character needs a name shorter than 45 characters') }
+        if (race.length < 1) { errors.push('Your character needs a race') }
+        if (race.length > 20) { errors.push('Your character race cannot be more than 20 characters') }
+        if (!level) { errors.push("Your character needs a level") }
+        if (!speed) { errors.push('Your character needs a speed') }
+        if (!armorClass) { errors.push('Your character needs an armor class') }
+        if (!health) { errors.push('Your character needs hp') }
+        if (init.length < 1) { errors.push('Your character needs an initiative modifier') }
+        if (hitDice.length < 1) { errors.push('Your character needs hitdice') }
+        if (!strength) { errors.push("Your character needs a strength score") }
+        if (!wisdom) { errors.push('Your character needs a wisdom score') }
+        if (!constitution) { errors.push("Your character needs a constitution") }
+        if (!intelligence) { errors.push("Your character needs an intelligence score") }
+        if (!dexterity) { errors.push("Your character needs a dexterity score") }
+        if (!charisma) { errors.push("Your character needs a charisma score") }
+        if (!spellSave) { errors.push("Your character needs a spell save dc") }
+        if (spellMod.length < 1) { errors.push("Your character needs a spell attack modifier") }
+        setErrorsArr(errors)
+    }, [name, race, level, speed, armorClass, health, init, hitDice, strength, wisdom, constitution, intelligence, dexterity, charisma, spellSave, spellMod])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+
         const payload = {
             userId: user.id,
             name,
@@ -68,104 +92,114 @@ const NewCharacterForm = () => {
             spellSave,
             spellMod
         };
-        
-        let newCharacter = await dispatch(createCharacter(payload));
+
+        let newCharacter
+        if (errorsArr.length === 0) {
+            newCharacter = await dispatch(createCharacter(payload));
+        }
         console.log(newCharacter)
         if (newCharacter) {
-          history.push('/')
+            history.push('/')
         }
-      };
+    };
 
     return (
-        <div className='forms'>
-            <input
-                type="text"
-                placeholder="Name"
-                value={name}
-                onChange={updateName} />
-            <label for='class'>Class</label>
-            <select id='class' onChange={updateClass} value={characterClass}>
-                <option value="ranger">Ranger</option>
-                <option value='rogue'>Rogue</option>
-                <option value='fighter'>Fighter</option>
-            </select>
-            <label for='race'>Race</label>
-            <select id='race' onChange={updateRace} value={race}>
-                <option value="human">Human</option>
-                <option value='elf'>Elf</option>
-                <option value='dwarf'>Dwarf</option>
-            </select>
-            <input
-                type="number"
-                placeholder="Level"
-                value={level}
-                onChange={updateLevel} />
-            <input
-                type="number"
-                placeholder="Speed"
-                value={speed}
-                onChange={updateSpeed} />
-            <input
-               type="number"
-               placeholder="Armor Class"
-               value={armorClass}
-               onChange={updateArmorClass} />
-            <input
-               type="number"
-               placeholder="Health"
-               value={health}
-               onChange={updateHealth} />
-            <input
-               type="text"
-               placeholder="Initiative"
-               value={init}
-               onChange={updateInit} />
-            <input
-               type="text"
-               placeholder="Hit Dice"
-               value={hitDice}
-               onChange={updateHitDice} />
-            <input
-               type="number"
-               placeholder="Strength"
-               value={strength}
-               onChange={updateStrength} />
-            <input
-               type="number"
-               placeholder="Wisdom"
-               value={wisdom}
-               onChange={updateWisdom} />
-            <input
-               type="number"
-               placeholder="Constitution"
-               value={constitution}
-               onChange={updateConstitution} />
-            <input
-               type="number"
-               placeholder="Intelligence"
-               value={intelligence}
-               onChange={updateIntelligence} />
-            <input
-               type="number"
-               placeholder="Dexterity"
-               value={dexterity}
-               onChange={updateDexterity} />
-            <input
-               type="number"
-               placeholder="Charisma"
-               value={charisma}
-               onChange={updateCharisma} />
-            <input
-               type="number"
-               placeholder="Spell Save DC"
-               value={spellSave}
-               onChange={updateSpellSave} />
-            <input
-               type="text"
-               placeholder="Spell Attack Modifier"
-               value={spellMod}
-               onChange={updateSpellMod} />
-            <button className="button" onClick={handleSubmit}>Create Character</button>
+        <div>
+            <ul>
+                {errorsArr.map((error) => {
+                    return (<li>{error}</li>)
+                })}
+            </ul>
+            <form className='forms'>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={updateName} />
+                <label for='class'>Class</label>
+                <select id='class' onChange={updateClass} value={characterClass}>
+                    <option value="ranger">Ranger</option>
+                    <option value='rogue'>Rogue</option>
+                    <option value='fighter'>Fighter</option>
+                </select>
+                <label for='race'>Race</label>
+                <select id='race' onChange={updateRace} value={race}>
+                    <option value="human">Human</option>
+                    <option value='elf'>Elf</option>
+                    <option value='dwarf'>Dwarf</option>
+                </select>
+                <input
+                    type="number"
+                    placeholder="Level"
+                    value={level}
+                    onChange={updateLevel} />
+                <input
+                    type="number"
+                    placeholder="Speed"
+                    value={speed}
+                    onChange={updateSpeed} />
+                <input
+                    type="number"
+                    placeholder="Armor Class"
+                    value={armorClass}
+                    onChange={updateArmorClass} />
+                <input
+                    type="number"
+                    placeholder="Health"
+                    value={health}
+                    onChange={updateHealth} />
+                <input
+                    type="text"
+                    placeholder="Initiative"
+                    value={init}
+                    onChange={updateInit} />
+                <input
+                    type="text"
+                    placeholder="Hit Dice"
+                    value={hitDice}
+                    onChange={updateHitDice} />
+                <input
+                    type="number"
+                    placeholder="Strength"
+                    value={strength}
+                    onChange={updateStrength} />
+                <input
+                    type="number"
+                    placeholder="Wisdom"
+                    value={wisdom}
+                    onChange={updateWisdom} />
+                <input
+                    type="number"
+                    placeholder="Constitution"
+                    value={constitution}
+                    onChange={updateConstitution} />
+                <input
+                    type="number"
+                    placeholder="Intelligence"
+                    value={intelligence}
+                    onChange={updateIntelligence} />
+                <input
+                    type="number"
+                    placeholder="Dexterity"
+                    value={dexterity}
+                    onChange={updateDexterity} />
+                <input
+                    type="number"
+                    placeholder="Charisma"
+                    value={charisma}
+                    onChange={updateCharisma} />
+                <input
+                    type="number"
+                    placeholder="Spell Save DC"
+                    value={spellSave}
+                    onChange={updateSpellSave} />
+                <input
+                    type="text"
+                    placeholder="Spell Attack Modifier"
+                    value={spellMod}
+                    onChange={updateSpellMod} />
+                <button className="button" onClick={handleSubmit}>Create Character</button>
+            </form>
         </div>
     )
 };

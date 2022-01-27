@@ -7,29 +7,32 @@ const MainNavBar = () => {
   const { id } = useParams()
 
   return (
-    <nav class='navbar'>
-      <ul>
+    <nav className='navbar'>
+      <ul className='navbarlinks'>
         <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
+          <h2 className="logoname">QuestKeeper</h2>
+        </li>
+        <li>
+          <NavLink className='navlinkstyle' to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to={`/characters/${id}`} exact={true} activeClassName='active'>
+          <NavLink className='navlinkstyle' to={`/characters/${id}`} exact={true} activeClassName='active'>
             Main
           </NavLink>
         </li>
         <li>
-          <NavLink to={`/spells/${id}`} exact={true} activeClassName='active'>
+          <NavLink className='navlinkstyle' to={`/spells/${id}`} exact={true} activeClassName='active'>
             Spells
           </NavLink>
         </li>
         <li>
-          <NavLink to={`/inventory/${id}`} exact={true} activeClassName='active'>
+          <NavLink className='navlinkstyle' to={`/inventory/${id}`} exact={true} activeClassName='active'>
             Inventory
           </NavLink>
         </li>
-        <li>
+        <li className='nav-button'>
           <LogoutButton />
         </li>
       </ul>
