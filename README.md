@@ -11,7 +11,7 @@ https://questkeeper.herokuapp.com/
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/030820acc/QuestKeeper.git
    ```
 
 2. Install dependencies
