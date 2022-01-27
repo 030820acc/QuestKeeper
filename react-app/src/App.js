@@ -40,6 +40,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path='/about' exact={true}>
+          <SelectNavBar />
           <AboutPage />
         </Route>
         <ProtectedRoute path='/characters/new' exact={true}>

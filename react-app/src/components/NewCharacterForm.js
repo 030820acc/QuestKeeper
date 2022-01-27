@@ -15,8 +15,8 @@ const NewCharacterForm = () => {
     const [speed, setSpeed] = useState()
     const [armorClass, setArmorClass] = useState()
     const [health, setHealth] = useState()
-    const [init, setInit] = useState()
-    const [hitDice, setHitDice] = useState()
+    const [init, setInit] = useState('')
+    const [hitDice, setHitDice] = useState('')
     const [strength, setStrength] = useState()
     const [wisdom, setWisdom] = useState()
     const [constitution, setConstitution] = useState()
@@ -24,7 +24,7 @@ const NewCharacterForm = () => {
     const [dexterity, setDexterity] = useState()
     const [charisma, setCharisma] = useState()
     const [spellSave, setSpellSave] = useState()
-    const [spellMod, setSpellMod] = useState()
+    const [spellMod, setSpellMod] = useState('')
     const [errorsArr, setErrorsArr] = useState([])
 
 
