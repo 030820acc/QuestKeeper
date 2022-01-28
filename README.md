@@ -1,13 +1,34 @@
-# Flask React Project
+## QuestKeeper 
+QuestKeeper is a character sheet creator and storage application to make all the things you need for Dungeons and Dragons together in one place. After making an account users can add new characters and update them with new spells and weapons and they wont get mixed in with other peoples characters and spells and weapons and will stay safe behind your account. The character sheets have been laid out in a way that is easy to use where the parts you need most are accessible and the parts that deserve more space and detail are given tabs on the main page so they are easy to get to. I am glad to have finally worked on this project, it is an idea I have had in the back of my brain for a long time and now that school at App Academy is finishing up I am confident I have the skills to create it the way I want it to be. The styling of this website is inspired by the Dungeons and Dragons website so it will look official and professional. 
+***
+## Technology used
+QuestKeeper is built using the following technologies:
 
-This is the starter for the Flask React project.
+Javascript
+React
+Redux
+Python
+Flask
+CSS
+Heroku
+SQLAlchemy
+PostgreSQL
+***
+## Future goals
+In the future I plan to implement the following features:
+additional tabs on the `/characters` page for abilities, items, and armors. As well as, adding skills and languages and proficiencies columns to the character table for a more fleshed out character. I also plan to implement a spell slot counter on the `/spells` pages that will keep track of used spell slots for each level so the player will not have to.
 
-## Getting started
+***
+## Live link to heroku
+https://questkeeper.herokuapp.com/
+
+***
+## Local startup instructions
 
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/030820acc/QuestKeeper.git
    ```
 
 2. Install dependencies
@@ -41,94 +62,3 @@ This is the starter for the Flask React project.
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
 ***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
-
-   ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
