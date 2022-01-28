@@ -16,7 +16,7 @@ PostgreSQL
 ***
 ## Future goals
 In the future I plan to implement the following features:
-additional tabs on the `/characters` page for abilities, items, and armors. As well as, 
+additional tabs on the `/characters` page for abilities, items, and armors. As well as, adding skills and languages and proficiencies columns to the character table for a more fleshed out character. I also plan to implement a spell slot counter on the `/spells` pages that will keep track of used spell slots for each level so the player will not have to.
 
 ***
 ## Live link to heroku
