@@ -20,6 +20,7 @@ const SpellPage = () => {
     return (
         <div className="card-grid">
             <div className="new-button-card">
+                <p>Here you can see spells in more detail or create a new one.</p>
                 <NavLink id="new-button" to={`/spells/new/${id}`}>+</NavLink>
             </div>
             {spellArr?.map((spell) => {

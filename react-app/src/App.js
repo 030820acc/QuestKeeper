@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
 import MainNavBar from './components/MainNavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
@@ -18,13 +16,16 @@ import SpellPage from './components/SpellPage';
 import NewSpellForm from './components/NewSpellForm'
 import EditSpellForm from './components/EditSpellForm';
 import AboutPage from './components/AboutPage';
+import LogoutNavBar from './components/LogoutNav';
+import SplashPage from './components/SplashPage';
+import SignupPage from './components/SignupPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -78,14 +79,14 @@ function App() {
           <MainCharacterPage />
         </ProtectedRoute>
         <Route path='/login' exact={true}>
-          <SelectNavBar />
-          <LoginForm />
+          <LogoutNavBar />
+          <SplashPage />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SelectNavBar />
-          <SignUpForm />
+          <LogoutNavBar />
+          <SignupPage />
         </Route>
-        <ProtectedRoute path='/' exact={true} > 
+        <ProtectedRoute path='/' exact={true} >
           <SelectNavBar />
           <CharacterSelect />
         </ProtectedRoute>

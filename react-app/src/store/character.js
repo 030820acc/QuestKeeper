@@ -3,6 +3,7 @@ const GET_ALL_CHARACTERS = "characters/GET_ALL_CHARACTERS"
 const ADD_CHARACTER = "/characters/ADD_CHARACTER";
 const UPDATE_CHARACTER = "characters/UPDATE_CHARACTER";
 const DELETE_CHARACTER = "characters/DELETE_CHARACTER";
+const CLEAR_CHARACTERS = "characters/CLEAR_CHARACTERS";
 
 const loadAllCharacters = (characters) => ({
   type: GET_ALL_CHARACTERS,
@@ -24,13 +25,21 @@ const loadDeletedCharacter = (characterId) => ({
   characterId,
 });
 
+const clearCharacterState = () => ({
+  type: CLEAR_CHARACTERS,
+});
+
+export const clearState = () => async (dispatch) => {
+  dispatch(clearCharacterState())
+}
+
 export const getAllCharacters = (userId) => async (dispatch) => {
-    const res = await fetch(`/api/characters/${userId}`);
-    if (res.ok) {
-      const characters = await res.json();
-      dispatch(loadAllCharacters(characters));
-      return characters;
-    }
+  const res = await fetch(`/api/characters/${userId}`);
+  if (res.ok) {
+    const characters = await res.json();
+    dispatch(loadAllCharacters(characters));
+    return characters;
+  }
 };
 
 
@@ -52,30 +61,30 @@ export const createCharacter = (payload) => async (dispatch) => {
 
 
 export const updateCharacter = (payload, characterId) => async (dispatch) => {
-    const res = await fetch(`/api/characters/${characterId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+  const res = await fetch(`/api/characters/${characterId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
-    if (res.ok) {
-      const character = await res.json();
-      dispatch(loadEditedCharacter(character));
-      return character
-    }
+  if (res.ok) {
+    const character = await res.json();
+    dispatch(loadEditedCharacter(character));
+    return character
+  }
 };
 
 
-export const deleteCharacter = (characterId ) => async (dispatch) => {
-    const res = await fetch(`/api/characters/${characterId}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" }
-    });
+export const deleteCharacter = (characterId) => async (dispatch) => {
+  const res = await fetch(`/api/characters/${characterId}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" }
+  });
 
-    if (res.ok) {
-      const characterId = await res.json();
-      dispatch(loadDeletedCharacter(characterId));
-    }
+  if (res.ok) {
+    const characterId = await res.json();
+    dispatch(loadDeletedCharacter(characterId));
+  }
 };
 
 const initialState = {};
@@ -97,6 +106,8 @@ const characterReducer = (state = initialState, action) => {
       newState = { ...state };
       delete newState[action.characterId];
       return { ...newState };
+    case CLEAR_CHARACTERS:
+      return {};
     default:
       return state;
   }

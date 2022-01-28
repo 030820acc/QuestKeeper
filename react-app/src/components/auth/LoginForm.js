@@ -31,7 +31,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form className='forms' onSubmit={onLogin}>
+    <form className='authforms' onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -56,8 +56,8 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button className='button' type='submit'>Login</button>
-        <button className='button' onClick={(e) => {
+        <button className='button2' type='submit'>Login</button>
+        <button className='button2' onClick={(e) => {
           e.preventDefault()
           setUsername('Demo')
           setPassword('password')

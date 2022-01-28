@@ -12,6 +12,16 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //     let errors = [];
+  //     if (name?.length < 1) { errors.push('"A man needs a name" - Jaqen HGhar') }
+  //     if (name?.length > 60) { errors.push('Your name must be less than 60 characters') }
+  //     if (username?.length < 1) { errors.push('Username is required') }
+  //     if (username?.length > 40) { errors.push('Username must be less than 40 characters') }
+  //     if (password?.length < 1) { errors.push("Password is required") }
+  //     setErrorsArr(errors)
+  // }, [name, username, password, repeatPassword])
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
@@ -43,7 +53,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <form className='forms' onSubmit={onSignUp}>
+    <form className='authforms' onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -86,7 +96,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button className='button' type='submit'>Sign Up</button>
+      <button className='button2' type='submit'>Sign Up</button>
     </form>
   );
 };

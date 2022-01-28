@@ -20,6 +20,7 @@ const CharacterSelect = () => {
     return (
         <div className="card-grid">
             <div className="new-button-card">
+                <p>Choose a character to see their sheet or create a new one.</p>
                 <NavLink id="new-button" to='/characters/new'>+</NavLink>
             </div>
             {charArr?.map((char) => {

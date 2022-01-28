@@ -12,6 +12,20 @@ const rootReducer = combineReducers({
   spells: spellReducer
 });
 
+// const appReducer = combineReducers({
+//   session,
+//   characters: characterReducer,
+//   weapons: weaponReducer,
+//   spells: spellReducer
+// })
+
+// const rootReducer = (state, action) => {
+//   if (action.type === 'REMOVE_USER') {
+//     return appReducer(undefined, action)
+//   }
+
+//   return appReducer(state, action)
+// }
 
 let enhancer;
 

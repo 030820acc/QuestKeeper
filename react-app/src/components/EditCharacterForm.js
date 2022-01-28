@@ -52,16 +52,18 @@ const EditCharacterForm = () => {
 
     useEffect(() => {
         let errors = [];
-        if (name.length < 1) { errors.push('Your character needs a name.') }
-        if (name.length > 45) { errors.push('Your character needs a name shorter than 45 characters') }
-        if (race.length < 1) { errors.push('Your character needs a race') }
-        if (race.length > 20) { errors.push('Your character race cannot be more than 20 characters') }
+        if (name?.length < 1) { errors.push('Your character needs a name.') }
+        if (name?.length > 45) { errors.push('Your character needs a name shorter than 45 characters') }
+        if (race?.length < 1) { errors.push('Your character needs a race') }
+        if (race?.length > 20) { errors.push('Your character race cannot be more than 20 characters') }
         if (!level) { errors.push("Your character needs a level") }
         if (!speed) { errors.push('Your character needs a speed') }
         if (!armorClass) { errors.push('Your character needs an armor class') }
         if (!health) { errors.push('Your character needs hp') }
-        if (init.length < 1) { errors.push('Your character needs an initiative modifier') }
-        if (hitDice.length < 1) { errors.push('Your character needs hitdice') }
+        if (init?.length < 1) { errors.push('Your character needs an initiative modifier') }
+        if (init?.length < 1) { errors.push('Your character needs a shorter initiative modifier') }
+        if (hitDice?.length < 1) { errors.push('Your character needs hitdice') }
+        if (hitDice?.length > 60) { errors.push('Your hitdice must be less than 60 characters') }
         if (!strength) { errors.push("Your character needs a strength score") }
         if (!wisdom) { errors.push('Your character needs a wisdom score') }
         if (!constitution) { errors.push("Your character needs a constitution") }
@@ -69,7 +71,8 @@ const EditCharacterForm = () => {
         if (!dexterity) { errors.push("Your character needs a dexterity score") }
         if (!charisma) { errors.push("Your character needs a charisma score") }
         if (!spellSave) { errors.push("Your character needs a spell save dc") }
-        if (spellMod.length < 1) { errors.push("Your character needs a spell attack modifier") }
+        if (spellMod?.length < 1) { errors.push("Your character needs a spell attack modifier") }
+        if (spellMod?.length > 60) { errors.push("Your spell attack modifier must be less than 60 characters") }
         setErrorsArr(errors)
     }, [name, race, level, speed, armorClass, health, init, hitDice, strength, wisdom, constitution, intelligence, dexterity, charisma, spellSave, spellMod])
 
@@ -110,7 +113,7 @@ const EditCharacterForm = () => {
         <div>
             <ul>
                 {errorsArr.map((error) => {
-                    return (<li>{error}</li>)
+                    return (<li className='error'>{error}</li>)
                 })}
             </ul>
             <form className='forms'>

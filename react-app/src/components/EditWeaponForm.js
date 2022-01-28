@@ -21,9 +21,12 @@ const EditWeaponForm = () => {
 
     useEffect(() => {
         let errors = [];
-        if (name.length < 1) { errors.push('Your weapon needs a name.') }
-        if (dmgDice.length < 1) { errors.push('Your weapon needs a damage amount') }
-        if (keywords.length < 1) { errors.push("Your weapon needs keywords") }
+        if (name?.length < 1) { errors.push('Your weapon needs a name.') }
+        if (name?.length > 60) { errors.push('Your weapon needs a shorter name.') }
+        if (dmgDice?.length < 1) { errors.push('Your weapon needs a damage amount') }
+        if (dmgDice?.length > 60) { errors.push('Your weapon needs a shorter damage amount') }
+        if (keywords?.length < 1) { errors.push("Your weapon needs keywords") }
+        if (keywords?.length > 60) { errors.push("Your weapon needs less keywords") }
         setErrorsArr(errors)
     }, [name, dmgDice, keywords])
 
@@ -50,7 +53,7 @@ const EditWeaponForm = () => {
         <div>
             <ul>
                 {errorsArr.map((error) => {
-                    return (<li>{error}</li>)
+                    return (<li className='error'>{error}</li>)
                 })}
             </ul>
             <form className='forms'>

@@ -20,6 +20,7 @@ const WeaponPage = () => {
     return (
         <div className="card-grid">
             <div className="new-button-card">
+                <p>Here you can see weapons in more detail or you can create a new one.</p>
                 <NavLink id="new-button" to={`/weapons/new/${id}`}>+</NavLink>
             </div>
             {weaponArr?.map((weapon) => {

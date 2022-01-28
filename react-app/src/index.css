@@ -7,6 +7,19 @@ li{
     list-style-type: none;
 }
 
+.error{
+    color: red;
+}
+
+.authforms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 50px;
+}
+
 .forms{
     display: flex;
     flex-direction: row;
@@ -15,10 +28,9 @@ li{
     margin-top: 15px;
     background-image: url("./formbackground.jpg");
     padding: 50px;
-
 }
 
-.forms > input{
+input{
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -32,13 +44,13 @@ label{
     color: white;
 }
 
-.forms > button{
+/* button{
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
-}
+} */
 
-.forms > select{
+select{
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -126,7 +138,7 @@ label{
     border: 2px solid black;
     border-radius: .25rem;
     padding: 1rem;
-    background-color: #e7e7db;
+    background-image: url("./dndbackground.png");
     margin: 1rem;
     box-shadow: 10px 10px 6px 1px #5d5d5d;
     transition: box-shadow 0.25s ease;
@@ -136,14 +148,28 @@ label{
     box-shadow: 12px 12px 8px 1px #5d5d5d;
 }
 
+.splash{
+    background-image:  url("./formbackground.jpg");
+    display: flex;
+    height: 100vh;
+}
+
+.splashpanel{
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 15px;
+}
+
 .new-button-card{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 2px solid black;
     border-radius: .25rem;
     padding: 1rem;
-    background-color: #e7e7db;
+    background-image: url("./dndbackground.png");
     margin: 1rem;
     box-shadow: 10px 10px 6px 1px #5d5d5d;
     transition: box-shadow 0.25s ease;
@@ -217,6 +243,9 @@ body{
     padding: 10px 20px;
     border: 2px solid white;
     color: #fff;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     transition: background-color 0.25s ease;
 }
 
@@ -246,6 +275,9 @@ body{
     border: 0;
     background: #9d0a0e;
     color: white;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     transition: background-color 0.25s ease;
 }
 

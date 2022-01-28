@@ -38,9 +38,13 @@ const EditSpellForm = () => {
         if (castingTime?.length < 1) { errors.push('Your spell needs a casting time.') }
         if (castingTime?.length > 40) { errors.push('The casting time cannot be more than 40 characters') }
         if (components?.length < 1) { errors.push('Your spell needs components.') }
+        if (components?.length > 100) { errors.push('Your spell needs less components.') }
         if (range?.length < 1) { errors.push("Your spell needs a range") }
+        if (range?.length > 60) { errors.push("Your spell's range must be less than than 60 characters") }
         if (target?.length < 1) { errors.push("Your spell needs a target") }
+        if (target?.length > 60) { errors.push("Your spell's target must be less than 60 characters") }
         if (duration?.length < 1) { errors.push('Your spell needs a duration') }
+        if (duration?.length > 60) { errors.push('Your spell duration needs to be less than 60 characters') }
         if (details?.length < 1) { errors.push("Your spell needs details") }
         setErrorsArr(errors)
     }, [name, levelSchool, castingTime, components, range, target, duration, details])
@@ -72,7 +76,7 @@ const EditSpellForm = () => {
         <div>
             <ul>
                 {errorsArr.map((error) => {
-                    return (<li>{error}</li>)
+                    return (<li className='error'>{error}</li>)
                 })}
             </ul>
             <form className='forms'>
