@@ -12,22 +12,12 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //     let errors = [];
-  //     if (name?.length < 1) { errors.push('"A man needs a name" - Jaqen HGhar') }
-  //     if (name?.length > 60) { errors.push('Your name must be less than 60 characters') }
-  //     if (username?.length < 1) { errors.push('Username is required') }
-  //     if (username?.length > 40) { errors.push('Username must be less than 40 characters') }
-  //     if (password?.length < 1) { errors.push("Password is required") }
-  //     setErrorsArr(errors)
-  // }, [name, username, password, repeatPassword])
-
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, name, password));
       if (data) {
-        setErrors(data)
+        setErrors([...errors, data])
       }
     }
   };
@@ -56,7 +46,7 @@ const SignUpForm = () => {
     <form className='authforms' onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div key={ind} className='error'>{error}</div>
         ))}
       </div>
       <div>
@@ -66,6 +56,7 @@ const SignUpForm = () => {
           name='username'
           onChange={updateUsername}
           value={username}
+          required={true}
         ></input>
       </div>
       <div>
@@ -75,6 +66,7 @@ const SignUpForm = () => {
           name='name'
           onChange={updateName}
           value={name}
+          required={true}
         ></input>
       </div>
       <div>
@@ -84,6 +76,7 @@ const SignUpForm = () => {
           name='password'
           onChange={updatePassword}
           value={password}
+          required={true}
         ></input>
       </div>
       <div>
