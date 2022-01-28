@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [inputerrors, setInputerrors] = useState([])
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -12,12 +13,19 @@ const SignUpForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    let othererrors = [];
+    if (username?.length < 4 || username?.length > 30) { othererrors.push('Username must be between 4-30 characters') }
+    if (!(password === repeatPassword)) {othererrors.push('Passwords must match')}
+    setInputerrors(othererrors)
+}, [name, password, username, repeatPassword])
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, name, password));
       if (data) {
-        setErrors([...errors, data])
+        setErrors([data])
       }
     }
   };
@@ -48,6 +56,11 @@ const SignUpForm = () => {
         {errors.map((error, ind) => (
           <div key={ind} className='error'>{error}</div>
         ))}
+        {inputerrors.map((error) => {
+          return (
+            <p className='error'>{error}</p>
+          )
+        })}
       </div>
       <div>
         <label>User Name</label>

@@ -12,11 +12,11 @@ const SpellCard = ({spell}) => {
             <div>
                 <h2 className="name">{spell?.name}</h2>
                 <p>{spell?.level_school}</p>
-                <p>{spell?.casting_time}</p>
-                <p>{spell?.components}</p>
-                <p>{spell?.range}</p>
-                <p>{spell?.target}</p>
-                <p>{spell?.duration}</p>
+                <p>Casting time: {spell?.casting_time}</p>
+                <p>Components: {spell?.components}</p>
+                <p>Range: {spell?.range}</p>
+                <p>Target: {spell?.target}</p>
+                <p>Duration: {spell?.duration}</p>
                 <p>{spell?.details}</p>
             </div>
             <div>
