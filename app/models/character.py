@@ -23,6 +23,10 @@ class Character(db.Model):
     spell_save = db.Column(db.Integer, nullable=False)
     spell_mod = db.Column(db.String, nullable=False)
     
+    spells = db.relationship('Spell', cascade='all, delete')
+    weapons = db.relationship('Weapon', cascade='all, delete')
+    items = db.relationship('Item', cascade='all, delete')
+    armors = db.relationship('Armor', cascade='all, delete')
 
     def to_dict(self):
         return {
