@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
 
 const LogoutNavBar = () => {
 
@@ -25,9 +24,6 @@ const LogoutNavBar = () => {
                     <NavLink className='navlinkstyle' to='/login' exact={true} activeClassName='active'>
                         Login
                     </NavLink>
-                </li>
-                <li className='nav-button'>
-                    <LogoutButton />
                 </li>
             </ul>
         </nav>
