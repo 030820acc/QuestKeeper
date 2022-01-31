@@ -2,6 +2,7 @@ const GET_ALL_WEAPONS = "weapons/GET_ALL_WEAPONS"
 const ADD_WEAPON = "/weapons/ADD_WEAPON";
 const UPDATE_WEAPON = "weapons/UPDATE_WEAPON";
 const DELETE_WEAPON = "weapons/DELETE_WEAPON";
+const CLEAR_WEAPONS = "weapons/CLEAR_WEAPONS";
 
 const loadAllWeapons = (weapons) => ({
   type: GET_ALL_WEAPONS,
@@ -23,13 +24,21 @@ const loadDeletedWeapon = (weaponId) => ({
   weaponId,
 });
 
+const clearWeaponState = () => ({
+  type: CLEAR_WEAPONS,
+});
+
+export const clearWeapon = () => async (dispatch) => {
+  dispatch(clearWeaponState())
+}
+
 export const getAllWeapons = (characterId) => async (dispatch) => {
-    const res = await fetch(`/api/weapons/${characterId}`);
-    if (res.ok) {
-      const weapons = await res.json();
-      dispatch(loadAllWeapons(weapons));
-      return weapons;
-    }
+  const res = await fetch(`/api/weapons/${characterId}`);
+  if (res.ok) {
+    const weapons = await res.json();
+    dispatch(loadAllWeapons(weapons));
+    return weapons;
+  }
 };
 
 
@@ -51,30 +60,30 @@ export const createWeapon = (payload) => async (dispatch) => {
 
 
 export const updateWeapon = (payload, weaponId) => async (dispatch) => {
-    const res = await fetch(`/api/weapons/${weaponId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+  const res = await fetch(`/api/weapons/${weaponId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
-    if (res.ok) {
-      const weapon = await res.json();
-      dispatch(loadEditedWeapon(weapon));
-      return weapon
-    }
+  if (res.ok) {
+    const weapon = await res.json();
+    dispatch(loadEditedWeapon(weapon));
+    return weapon
+  }
 };
 
 
-export const deleteWeapon = (weaponId ) => async (dispatch) => {
-    const res = await fetch(`/api/weapons/${weaponId}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" }
-    });
+export const deleteWeapon = (weaponId) => async (dispatch) => {
+  const res = await fetch(`/api/weapons/${weaponId}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" }
+  });
 
-    if (res.ok) {
-      const weaponId = await res.json();
-      dispatch(loadDeletedWeapon(weaponId));
-    }
+  if (res.ok) {
+    const weaponId = await res.json();
+    dispatch(loadDeletedWeapon(weaponId));
+  }
 };
 
 const initialState = {};
@@ -96,6 +105,8 @@ const weaponReducer = (state = initialState, action) => {
       newState = { ...state };
       delete newState[action.weaponId];
       return { ...newState };
+    case CLEAR_WEAPONS:
+      return {};
     default:
       return state;
   }

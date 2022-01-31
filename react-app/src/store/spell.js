@@ -2,6 +2,7 @@ const GET_ALL_SPELLS = "spells/GET_ALL_SPELLS"
 const ADD_SPELL = "/spells/ADD_SPELL";
 const UPDATE_SPELL = "spells/UPDATE_SPELL";
 const DELETE_SPELL = "spells/DELETE_SPELL";
+const CLEAR_SPELLS = "spells/CLEAR_SPELLS";
 
 const loadAllSpells = (spells) => ({
   type: GET_ALL_SPELLS,
@@ -22,6 +23,14 @@ const loadDeletedSpell = (spellId) => ({
   type: DELETE_SPELL,
   spellId,
 });
+
+const clearSpellState = () => ({
+  type: CLEAR_SPELLS,
+});
+
+export const clearSpell = () => async (dispatch) => {
+  dispatch(clearSpellState())
+}
 
 export const getAllSpells = (characterId) => async (dispatch) => {
     const res = await fetch(`/api/spells/${characterId}`);
@@ -96,6 +105,8 @@ const spellReducer = (state = initialState, action) => {
       newState = { ...state };
       delete newState[action.spellId];
       return { ...newState };
+    case CLEAR_SPELLS:
+      return {};
     default:
       return state;
   }

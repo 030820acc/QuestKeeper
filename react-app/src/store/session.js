@@ -1,4 +1,6 @@
 import { clearState } from "./character";
+import { clearSpell } from "./spell";
+import { clearWeapon } from "./weapon";
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
@@ -66,7 +68,9 @@ export const logout = () => async (dispatch) => {
   });
 
   if (response.ok) {
+    dispatch(clearWeapon())
     dispatch(clearState())
+    dispatch(clearSpell())
     dispatch(removeUser());
   }
 };
