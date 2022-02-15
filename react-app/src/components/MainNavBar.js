@@ -28,8 +28,18 @@ const MainNavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className='navlinkstyle' to={`/inventory/${id}`} exact={true} activeClassName='active'>
-            Inventory
+          <NavLink className='navlinkstyle' to={`/weapons/${id}`} exact={true} activeClassName='active'>
+            Weapons
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className='navlinkstyle' to={`/items/${id}`} exact={true} activeClassName='active'>
+            Items 
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className='navlinkstyle' to={`/armors/${id}`} exact={true} activeClassName='active'>
+            Armor
           </NavLink>
         </li>
         <li className='nav-button'>

@@ -11,6 +11,8 @@ from .api.auth_routes import auth_routes
 from .api.character_routes import characters
 from .api.weapon_routes import weapons
 from .api.spell_routes import spells
+from .api.armor_routes import armors
+from .api.item_routes import items
 
 from .seeds import seed_commands
 
@@ -37,6 +39,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(characters, url_prefix='/api/characters')
 app.register_blueprint(weapons, url_prefix='/api/weapons')
 app.register_blueprint(spells, url_prefix='/api/spells')
+app.register_blueprint(items, url_prefix='/api/items')
+app.register_blueprint(armors, url_prefix='/api/armors')
 db.init_app(app)
 Migrate(app, db)
 

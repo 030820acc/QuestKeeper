@@ -45,7 +45,7 @@ const NewWeaponForm = () => {
             newWeapon = await dispatch(createWeapon(payload));
         }
         if (newWeapon) {
-            history.push(`/inventory/${id}`)
+            history.push(`/weapons/${id}`)
         }
     };
 

@@ -45,7 +45,7 @@ const EditWeaponForm = () => {
             newWeapon = await dispatch(updateWeapon(payload, weapon.id));
         }
         if (newWeapon) {
-            history.push(`/inventory/${weapon.character_id}`)
+            history.push(`/weapons/${weapon.character_id}`)
         }
     };
 

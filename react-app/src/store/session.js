@@ -1,4 +1,6 @@
+import { clearArmor } from "./armor";
 import { clearState } from "./character";
+import { clearItem } from "./item";
 import { clearSpell } from "./spell";
 import { clearWeapon } from "./weapon";
 // constants
@@ -71,6 +73,8 @@ export const logout = () => async (dispatch) => {
     dispatch(clearWeapon())
     dispatch(clearState())
     dispatch(clearSpell())
+    dispatch(clearItem())
+    dispatch(clearArmor())
     dispatch(removeUser());
   }
 };

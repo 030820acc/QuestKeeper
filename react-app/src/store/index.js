@@ -4,12 +4,16 @@ import session from './session'
 import characterReducer from './character';
 import weaponReducer from './weapon';
 import spellReducer from './spell';
+import armorReducer from './armor';
+import itemReducer from './item';
 
 const rootReducer = combineReducers({
   session,
   characters: characterReducer,
   weapons: weaponReducer,
-  spells: spellReducer
+  spells: spellReducer,
+  armors: armorReducer,
+  items: itemReducer
 });
 
 // const appReducer = combineReducers({

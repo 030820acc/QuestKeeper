@@ -19,6 +19,12 @@ import AboutPage from './components/AboutPage';
 import LogoutNavBar from './components/LogoutNav';
 import SplashPage from './components/SplashPage';
 import SignupPage from './components/SignupPage';
+import EditItemForm from './components/EditItemForm';
+import NewItemForm from './components/NewItemForm';
+import ItemPage from './components/ItemPage';
+import NewArmorForm from './components/NewArmorForm';
+import EditArmorForm from './components/EditArmorForm';
+import ArmorPage from './components/ArmorPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +56,14 @@ function App() {
           <MainNavBar />
           <NewWeaponForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/items/new/:id' exact={true}>
+          <MainNavBar />
+          <NewItemForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/armors/new/:id' exact={true}>
+          <MainNavBar />
+          <NewArmorForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/spells/new/:id' exact={true}>
           <MainNavBar />
           <NewSpellForm />
@@ -62,13 +76,29 @@ function App() {
           <MainNavBar />
           <EditWeaponForm />
         </ProtectedRoute>
+        <ProtectedRoute path='/items/edit/:id' exact={true}>
+          <MainNavBar />
+          <EditItemForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/armors/edit/:id' exact={true}>
+          <MainNavBar />
+          <EditArmorForm />
+        </ProtectedRoute>
         <ProtectedRoute path='/spells/edit/:id' exact={true}>
           <MainNavBar />
           <EditSpellForm />
         </ProtectedRoute>
-        <ProtectedRoute path='/inventory/:id'>
+        <ProtectedRoute path='/weapons/:id'>
           <MainNavBar />
           <WeaponPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/items/:id'>
+          <MainNavBar />
+          <ItemPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/armors/:id'>
+          <MainNavBar />
+          <ArmorPage />
         </ProtectedRoute>
         <ProtectedRoute path='/spells/:id'>
           <MainNavBar />
